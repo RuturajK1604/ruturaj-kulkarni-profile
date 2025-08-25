@@ -18,6 +18,14 @@ export default function Contact() {
     fun: "#FF4081",
   };
 
+  // Theme-based text color
+  const textColors = {
+    light: theme.palette.text.primary,
+    dark: theme.palette.text.primary,
+    corporate: theme.palette.text.primary,
+    fun: theme.palette.text.primary,
+  };
+
   // Theme-based extra fun text
   const funLine =
     themeName === "fun"
@@ -30,13 +38,19 @@ export default function Contact() {
       sx={{ py: 10, bgcolor: theme.palette.background.default }}
     >
       <Container maxWidth="md">
-        <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          fontWeight="bold"
+          color={textColors[themeName]}
+        >
           Contact Me
         </Typography>
         <Typography
           variant="body1"
           align="center"
-          color={theme.palette.text.secondary}
+          color={textColors[themeName]}
           mb={5}
         >
           Feel free to reach out for opportunities, collaborations, or just to
@@ -54,7 +68,10 @@ export default function Contact() {
           <Grid item>
             <Box display="flex" alignItems="center" gap={1}>
               <EmailIcon sx={{ color: iconColors[themeName] }} />
-              <Link href="mailto: kulkarniruturaj1604@gmail.com" color="inherit">
+              <Link
+                href="mailto:ruturajkulkarni1604@gmail.com"
+                sx={{ color: textColors[themeName] }}
+              >
                 ruturajkulkarni1604@gmail.com
               </Link>
             </Box>
@@ -66,7 +83,7 @@ export default function Contact() {
                 href="https://linkedin.com/in/ruturaj-kulkarni"
                 target="_blank"
                 rel="noopener noreferrer"
-                color="inherit"
+                sx={{ color: textColors[themeName] }}
               >
                 linkedin.com/in/ruturaj-kulkarni
               </Link>
@@ -79,7 +96,7 @@ export default function Contact() {
                 href="https://github.com/ruturajk1604"
                 target="_blank"
                 rel="noopener noreferrer"
-                color="inherit"
+                sx={{ color: textColors[themeName] }}
               >
                 github.com/ruturajk1604
               </Link>

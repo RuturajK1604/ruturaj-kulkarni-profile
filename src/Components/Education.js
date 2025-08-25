@@ -9,8 +9,10 @@ import {
   List,
   ListItem,
   ListItemText,
+  useTheme,
 } from "@mui/material";
 import CommonCard from "../Containers/SectionWrapper";
+import { useThemeContext } from "../ThemeContext";
 
 export default function Education() {
   const educationSteps = [
@@ -36,6 +38,15 @@ export default function Education() {
       score: "CGPA: 7.07",
     },
   ];
+
+  const { themeName } = useThemeContext();
+  const theme = useTheme();
+  const noteBg = {
+    light: theme.palette.grey[100],
+    dark: theme.palette.background.paper,
+    corporate: "#f5f5f5",
+    fun: "#fff3e0",
+  };
 
   return (
     <section id="education" className="py-16 bg-gray-50">
@@ -76,7 +87,7 @@ export default function Education() {
         <Paper
           square
           elevation={0}
-          sx={{ p: 2, mt: 2, bgcolor: "grey.100", textAlign: "center" }}
+          sx={{ p: 2, mt: 2, bgcolor: noteBg[themeName], textAlign: "center" }}
         >
           <Typography variant="body1" fontWeight="bold">
             Learning never stops 🚀

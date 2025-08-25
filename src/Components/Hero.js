@@ -33,14 +33,14 @@ export default function Hero() {
       subtitle: "Professional Web Developer | React.js Expert",
       description:
         "A results-driven web developer with expertise in React.js, delivering high-quality, scalable, and maintainable applications. Passionate about creating robust solutions that drive business success.",
-      photo: "/PhotoCorporate.jpeg",
+      photo: "/Photo.jpeg",
     },
     fun: {
       title: "Hey there! I’m Ruturaj 😎",
       subtitle: "React Wizard | Frontend Magician ✨",
       description:
         "A passionate developer who loves crafting awesome web apps 🚀. Fun-loving, creative, and always experimenting with new ideas 💡. Let’s build something amazing together! 🎉",
-      photo: "/PhotoFun.jpeg",
+      photo: "/FunPhoto.jpeg",
     },
   };
 
@@ -64,16 +64,22 @@ export default function Hero() {
     <Box
       id="hero"
       sx={{
-        minHeight: "400px",
+        minHeight: { xs: "auto", md: "400px" }, // automatic height on mobile
         display: "flex",
-        alignItems: "center",
+        alignItems: { xs: "flex-start", md: "center" },
+        pt: { xs: "80px", md: "60px" }, // top padding for mobile & laptop
         backgroundColor: theme.palette.background.default,
         transition: "all 0.3s ease",
-        margin: "50px auto",
+        mx: "auto",
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
+        <Grid
+          container
+          spacing={4}
+          alignItems="center"
+          direction={{ xs: "column", md: "row" }}
+        >
           {/* Left: Profile Photo */}
           <Grid
             item
@@ -82,13 +88,14 @@ export default function Hero() {
             display="flex"
             justifyContent="center"
             alignItems="center"
+            mb={{ xs: 3, md: 0 }}
           >
             <Avatar
               alt="Ruturaj Kulkarni"
               src={process.env.PUBLIC_URL + photo}
               sx={{
-                width: { xs: 220, md: 280 },
-                height: { xs: 220, md: 280 },
+                width: { xs: 180, sm: 220, md: 280 },
+                height: { xs: 180, sm: 220, md: 280 },
                 boxShadow: 4,
                 border: "4px solid white",
                 transition: "all 0.3s ease",
@@ -127,33 +134,15 @@ export default function Hero() {
             <Typography
               variant="body1"
               color={theme.palette.text.secondary}
-              sx={{ mt: 2, fontSize: "1.1rem", maxWidth: 600 }}
+              sx={{
+                mt: 2,
+                fontSize: "1.1rem",
+                maxWidth: { xs: "100%", md: 600 },
+                mx: { xs: "auto", md: 0 },
+              }}
             >
               {description}
             </Typography>
-
-            {/* <Button
-              variant="contained"
-              size="large"
-              sx={{
-                mt: 4,
-                borderRadius: 2,
-                alignSelf: { xs: "center", md: "flex-start" },
-                background: currentButtonStyle.bgcolor,
-                color: currentButtonStyle.color,
-                px: 4,
-                py: 1.5,
-                fontWeight: "bold",
-                textTransform: "none",
-                "&:hover": {
-                  opacity: 0.9,
-                  background: currentButtonStyle.bgcolor,
-                },
-              }}
-              href="#projects"
-            >
-              View My Work
-            </Button> */}
           </Grid>
         </Grid>
       </Container>
