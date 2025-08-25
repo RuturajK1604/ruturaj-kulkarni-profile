@@ -79,10 +79,7 @@ export default function Skills() {
   };
 
   return (
-    <section
-      id="skills"
-      className="py-16"
-    >
+    <section id="skills" className="py-16">
       <CommonCard title="Skills">
         <Grid container spacing={3}>
           {skills.map((skill, index) => (
@@ -90,7 +87,8 @@ export default function Skills() {
               <Card
                 sx={{
                   height: 200,
-                  width: 320,
+                  maxWidth: 320, // instead of fixed width
+                  width: "100%", // responsive
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
@@ -100,18 +98,17 @@ export default function Skills() {
                   borderRadius: 2,
                   backgroundColor: currentCard.bg,
                   transition: "all 0.3s ease",
+                  mx: "auto", // center horizontally
                 }}
                 className="shadow-md hover:shadow-lg transition"
               >
                 <CardContent sx={{ p: 0 }}>
-                  {/* Icon with fun glow effect */}
                   {React.cloneElement(skill.icon, {
                     style:
                       themeName === "fun"
                         ? { filter: "drop-shadow(0 0 6px #FF6F00)" }
                         : {},
                   })}
-
                   <Typography
                     variant="h6"
                     sx={{

@@ -69,10 +69,10 @@ export default function Contact() {
             <Box display="flex" alignItems="center" gap={1}>
               <EmailIcon sx={{ color: iconColors[themeName] }} />
               <Link
-                href="mailto:ruturajkulkarni1604@gmail.com"
+                href="mailto:kulkarniruturaj1604@gmail.com"
                 sx={{ color: textColors[themeName] }}
               >
-                ruturajkulkarni1604@gmail.com
+                kulkarniruturaj1604@gmail.com
               </Link>
             </Box>
           </Grid>
@@ -80,12 +80,12 @@ export default function Contact() {
             <Box display="flex" alignItems="center" gap={1}>
               <LinkedInIcon sx={{ color: iconColors[themeName] }} />
               <Link
-                href="https://linkedin.com/in/ruturaj-kulkarni"
+                href="https://linkedin.com/in/ruturaj-s-kulkarni"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ color: textColors[themeName] }}
               >
-                linkedin.com/in/ruturaj-kulkarni
+                linkedin.com/in/ruturaj-s-kulkarni
               </Link>
             </Box>
           </Grid>
