@@ -1,0 +1,88 @@
+// src/Components/Education.js
+import {
+  Typography,
+  Stepper,
+  Step,
+  StepLabel,
+  StepContent,
+  Paper,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import CommonCard from "../Containers/SectionWrapper";
+
+export default function Education() {
+  const educationSteps = [
+    {
+      label: "10th",
+      location: "Ahilyanagar",
+      year: "2015",
+      institute: "Shri Samarth Vidya Mandir",
+      score: "90.40%",
+    },
+    {
+      label: "12th",
+      location: "Ahilyanagar",
+      year: "2017",
+      institute: "Pd. Dr. Vittharao Vikhe Patil Sainik School and SPI",
+      score: "64.40%",
+    },
+    {
+      label: "Bachelor of Engineering (Mechanical)",
+      location: "Pune",
+      year: "2021",
+      institute: "RMD Sinhgad School of Engineering (SPPU)",
+      score: "CGPA: 7.07",
+    },
+  ];
+
+  return (
+    <section id="education" className="py-16 bg-gray-50">
+      <CommonCard
+        title="Education"
+        headerColor="linear-gradient(90deg, #FF8C42, #FFB347)"
+      >
+        {/* Stepper Timeline */}
+        <Stepper orientation="vertical" activeStep={educationSteps.length}>
+          {educationSteps.map((step, index) => (
+            <Step key={index} active>
+              <StepLabel>
+                <Typography variant="h6" fontWeight="bold">
+                  {step.label}
+                </Typography>
+              </StepLabel>
+              <StepContent>
+                <List dense>
+                  <ListItem>
+                    <ListItemText primary={`📍 Location: ${step.location}`} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary={`🏫 Institute: ${step.institute}`} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary={`📅 Year: ${step.year}`} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary={`📊 Score: ${step.score}`} />
+                  </ListItem>
+                </List>
+              </StepContent>
+            </Step>
+          ))}
+        </Stepper>
+
+        {/* Final Completed Note */}
+        <Paper
+          square
+          elevation={0}
+          sx={{ p: 2, mt: 2, bgcolor: "grey.100", textAlign: "center" }}
+        >
+          <Typography variant="body1" fontWeight="bold">
+            Learning never stops 🚀
+          </Typography>
+        </Paper>
+      </CommonCard>
+    </section>
+  );
+}
