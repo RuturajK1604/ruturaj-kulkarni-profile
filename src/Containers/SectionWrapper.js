@@ -1,13 +1,12 @@
 // src/Components/CommonCard.js
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, Paper, IconButton, Collapse } from "@mui/material";
+import { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export default function CommonCard({
-  title,
-  children,
-  headerColor = "#FF8C42",
-}) {
-  const isGradient = headerColor.startsWith("linear-gradient");
-  const shadowColor = isGradient ? "#FF8C42" : headerColor;
+export default function CommonCard({ title, children }) {
+  const [open, setOpen] = useState(true);
+
+  const toggleOpen = () => setOpen(!open);
 
   return (
     <Paper
@@ -16,39 +15,52 @@ export default function CommonCard({
         width: "100%",
         maxWidth: "1200px",
         mx: "auto",
-        my: 6, // <-- adds vertical margin (top & bottom)
-        height: "500px",
+        my: 6,
         display: "flex",
         flexDirection: "column",
         borderRadius: "16px",
         overflow: "hidden",
-        boxShadow: `0 6px 20px ${shadowColor}55`,
       }}
     >
       {/* Header */}
       <Box
         sx={{
-          background: headerColor,
+          background: "#FF8C42",
           color: "white",
           py: 2,
           px: 3,
           fontWeight: "bold",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
         <Typography variant="h5">{title}</Typography>
+        <IconButton
+          onClick={toggleOpen}
+          sx={{
+            color: "white",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "0.3s",
+          }}
+        >
+          <ExpandMoreIcon />
+        </IconButton>
       </Box>
 
-      {/* Scrollable Content */}
-      <Box
-        sx={{
-          flex: 1,
-          p: 3,
-          overflowY: "auto",
-          bgcolor: "grey.50",
-        }}
-      >
-        {children}
-      </Box>
+      {/* Collapsible Content */}
+      <Collapse in={open}>
+        <Box
+          sx={{
+            flex: 1,
+            p: 3,
+            overflowY: "auto",
+            bgcolor: "grey.50",
+          }}
+        >
+          {children}
+        </Box>
+      </Collapse>
     </Paper>
   );
 }

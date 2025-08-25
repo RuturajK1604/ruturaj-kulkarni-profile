@@ -9,20 +9,14 @@ import {
   ListItemText,
 } from "@mui/material";
 import CommonCard from "../Containers/SectionWrapper";
+import { useThemeContext } from "../ThemeContext";
+import { useTheme } from "@mui/material/styles";
 
 export default function Projects() {
+  const { themeName } = useThemeContext();
+  const theme = useTheme();
+
   const projects = [
-    {
-      title: "Rock Paper Scissors Game",
-      description: "A fun interactive game to test your luck and strategy.",
-      features: [
-        "Simple and responsive UI",
-        "Randomized computer moves",
-        "Score tracking across rounds",
-      ],
-      demo: "https://ruturajk-rockpaperscissorgame.netlify.app/",
-      github: "#",
-    },
     {
       title: "Sudoku Puzzle",
       description: "A classic Sudoku puzzle with interactive digit placement.",
@@ -32,6 +26,17 @@ export default function Projects() {
         "Reset and check feature included",
       ],
       demo: "https://ruturajk-sudokupuzzle.netlify.app/",
+      github: "#",
+    },
+    {
+      title: "Rock Paper Scissors Game",
+      description: "A fun interactive game to test your luck and strategy.",
+      features: [
+        "Simple and responsive UI",
+        "Randomized computer moves",
+        "Score tracking across rounds",
+      ],
+      demo: "https://ruturajk-rockpaperscissorgame.netlify.app/",
       github: "#",
     },
     {
@@ -47,18 +52,62 @@ export default function Projects() {
     },
   ];
 
+  // Theme-based header and button text
+  const headerTextMap = {
+    light: "Personal Projects",
+    dark: "Personal Projects",
+    corporate: "Projects",
+    fun: "Games I Built",
+  };
+
+  const buttonTextMap = {
+    light: "Try Game",
+    dark: "Try Game",
+    corporate: "Launch Game",
+    fun: "Play Now",
+  };
+
+  const buttonStyles = {
+    light: { bg: theme.palette.primary.main, color: "white" },
+    dark: { bg: theme.palette.primary.main, color: "black" },
+    corporate: { bg: "#0d47a1", color: "white" },
+    fun: {
+      bg: "linear-gradient(45deg, #FF6F00, #1E88E5, #E53935, #FDD835)",
+      color: "white",
+    },
+  };
+
+  const { bg: btnBg, color: btnColor } =
+    buttonStyles[themeName] || buttonStyles.light;
+
+  // Add fun emojis if theme is fun
+  const projectsForTheme = projects.map((project) => {
+    if (themeName === "fun") {
+      return {
+        ...project,
+        description: project.description + " 🎮✨",
+        features: project.features.map((f) => f + " 🚀"),
+      };
+    }
+    return project;
+  });
+
   return (
-    <section id="projects" className="py-16 bg-gray-50">
-      <CommonCard title="Personal Projects" headerColor="#2563EB">
-        <Grid container spacing={4} mt={2}>
-          {projects.map((project, idx) => (
+    <section id="projects" className="py-16">
+      <CommonCard title={headerTextMap[themeName] || "Projects"}>
+        <Grid container spacing={4} mt={2} justifyContent="center">
+          {projectsForTheme.map((project, idx) => (
             <Grid item xs={12} sm={6} md={4} key={idx}>
               <Box
                 sx={{
                   border: "1px solid #ddd",
                   borderRadius: 2,
                   p: 2,
-                  height: "100%",
+                  my: 2,
+                  height: "250px",
+                  width: "300px",
+                  display: "flex",
+                  flexDirection: "column", // stack content vertically
                   "&:hover": {
                     boxShadow: 3,
                     transform: "scale(1.02)",
@@ -66,10 +115,19 @@ export default function Projects() {
                   },
                 }}
               >
-                <Typography variant="h6" gutterBottom color="primary">
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{ color: theme.palette.text.primary }}
+                >
                   {project.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
+
+                <Typography
+                  variant="body2"
+                  color={theme.palette.text.secondary}
+                  paragraph
+                >
                   {project.description}
                 </Typography>
 
@@ -81,14 +139,20 @@ export default function Projects() {
                   ))}
                 </List>
 
-                <Box sx={{ mt: 2 }}>
+                {/* Push buttons to bottom */}
+                <Box sx={{ mt: "auto" }}>
                   {project.github !== "#" && (
                     <Button
                       size="small"
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      sx={{ mr: 1 }}
+                      sx={{
+                        mr: 1,
+                        background: btnBg,
+                        color: btnColor,
+                        "&:hover": { opacity: 0.9, background: btnBg },
+                      }}
                     >
                       GitHub
                     </Button>
@@ -98,8 +162,13 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
+                    sx={{
+                      background: btnBg,
+                      color: btnColor,
+                      "&:hover": { opacity: 0.9, background: btnBg },
+                    }}
                   >
-                    Live Demo
+                    {buttonTextMap[themeName] || "Live Demo"}
                   </Button>
                 </Box>
               </Box>

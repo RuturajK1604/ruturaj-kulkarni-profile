@@ -10,11 +10,15 @@ import {
   ListItemButton,
   ListItemText,
   Box,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useThemeContext } from "../ThemeContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { themeName, setThemeName } = useThemeContext();
 
   const toggleDrawer = (state) => () => {
     setOpen(state);
@@ -23,7 +27,7 @@ export default function Navbar() {
   const menuItems = [
     { text: "About", id: "about" },
     { text: "Skills", id: "skills" },
-    { text: "Experience", id: "exoerience" },
+    { text: "Experience", id: "experience" },
     { text: "Projects", id: "projects" },
     { text: "Education", id: "education" },
     { text: "Contact", id: "contact" },
@@ -31,31 +35,49 @@ export default function Navbar() {
 
   const handleScroll = (id) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    if (section) section.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   };
 
   return (
     <>
-      {/* Top Navbar */}
       <AppBar position="fixed" color="default" elevation={2}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Logo / Name */}
-          <Typography variant="h6" fontWeight="bold">
-            Ruturaj Kulkarni
-          </Typography>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          {/* Left Side: Drawer button + Name */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" fontWeight="bold">
+              Ruturaj Kulkarni
+            </Typography>
+          </Box>
 
-          {/* Mobile Menu Button */}
-          <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </IconButton>
+          {/* Right Side: Theme Selector */}
+          <Select
+            value={themeName}
+            onChange={(e) => setThemeName(e.target.value)}
+            size="small"
+            sx={{
+              mr: 1,
+              minWidth: 120,
+              fontWeight: "bold",
+            }}
+          >
+            <MenuItem value="light">Light</MenuItem>
+            <MenuItem value="dark">Dark</MenuItem>
+            <MenuItem value="corporate">Corporate</MenuItem>
+            <MenuItem value="fun">Fun</MenuItem>
+          </Select>
         </Toolbar>
       </AppBar>
 
       {/* Drawer */}
-      <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
         <Box sx={{ width: 250 }} role="presentation">
           <List>
             {menuItems.map((item) => (
