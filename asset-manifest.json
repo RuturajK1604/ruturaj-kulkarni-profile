@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ruturaj-kulkarni-profile/static/css/main.e6c13ad2.css",
-    "main.js": "/ruturaj-kulkarni-profile/static/js/main.a330e954.js",
+    "main.js": "/ruturaj-kulkarni-profile/static/js/main.48e50dec.js",
     "static/js/453.c7e6818e.chunk.js": "/ruturaj-kulkarni-profile/static/js/453.c7e6818e.chunk.js",
     "index.html": "/ruturaj-kulkarni-profile/index.html",
     "main.e6c13ad2.css.map": "/ruturaj-kulkarni-profile/static/css/main.e6c13ad2.css.map",
-    "main.a330e954.js.map": "/ruturaj-kulkarni-profile/static/js/main.a330e954.js.map",
+    "main.48e50dec.js.map": "/ruturaj-kulkarni-profile/static/js/main.48e50dec.js.map",
     "453.c7e6818e.chunk.js.map": "/ruturaj-kulkarni-profile/static/js/453.c7e6818e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.a330e954.js"
+    "static/js/main.48e50dec.js"
   ]
 }
