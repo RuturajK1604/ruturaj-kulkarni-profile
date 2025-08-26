@@ -29,6 +29,7 @@ export default function Navbar() {
     { text: "Skills", id: "skills" },
     { text: "Experience", id: "experience" },
     { text: "Projects", id: "projects" },
+    { text: "Awards", id: "awards" },
     { text: "Education", id: "education" },
     { text: "Contact", id: "contact" },
   ];

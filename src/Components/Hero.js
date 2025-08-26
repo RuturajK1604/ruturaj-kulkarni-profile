@@ -19,7 +19,7 @@ export default function Hero() {
       subtitle: "Web Developer | React.js Specialist",
       description:
         "An enthusiastic developer who loves building clean, efficient, and scalable web applications. If you’re curious, let’s connect and create better solutions together.",
-      photo: "/Photo.jpeg",
+      photo: "/lightPhoto.jpeg",
     },
     dark: {
       title: "Hi, I’m Ruturaj",
