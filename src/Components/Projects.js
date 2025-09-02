@@ -2,11 +2,11 @@
 import {
   Typography,
   Button,
-  Grid,
   Box,
   List,
   ListItem,
   ListItemText,
+  Card,
 } from "@mui/material";
 import CommonCard from "../Containers/SectionWrapper";
 import { useThemeContext } from "../ThemeContext";
@@ -17,6 +17,18 @@ export default function Projects() {
   const theme = useTheme();
 
   const projects = [
+    {
+      title: "Chess Game",
+      description:
+        "A fully functional Chess game with player vs player support.",
+      features: [
+        "Interactive chessboard with draggable pieces",
+        "Move validation with check detection",
+        "Reset and restart functionality",
+      ],
+      demo: "https://ruturajk1604.github.io/chess-game/",
+      github: "#",
+    },
     {
       title: "Sudoku Puzzle",
       description: "A classic Sudoku puzzle with interactive digit placement.",
@@ -95,17 +107,29 @@ export default function Projects() {
   return (
     <section id="projects" className="py-16">
       <CommonCard title={headerTextMap[themeName] || "Projects"}>
-        <Grid container spacing={4} mt={2} justifyContent="center">
+        <Box
+          sx={{
+            display: "flex",
+            overflowX: "auto",
+            padding: 1,
+            gap: 2,
+            "&::-webkit-scrollbar": { height: "8px" },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#888",
+              borderRadius: "4px",
+            },
+          }}
+        >
+          {" "}
           {projectsForTheme.map((project, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
-              <Box
+              <Card
                 sx={{
                   border: "1px solid #ddd",
                   borderRadius: 2,
                   p: 2,
                   my: 2,
                   height: "250px",
-                  width: "300px",
+                  minWidth: "300px",
                   display: "flex",
                   flexDirection: "column", // stack content vertically
                   "&:hover": {
@@ -171,10 +195,9 @@ export default function Projects() {
                     {buttonTextMap[themeName] || "Live Demo"}
                   </Button>
                 </Box>
-              </Box>
-            </Grid>
+              </Card>
           ))}
-        </Grid>
+        </Box>
       </CommonCard>
     </section>
   );
