@@ -62,6 +62,14 @@ export default function Projects() {
       demo: "https://ruturajk1604.github.io/tiktaktoe/",
       github: "#",
     },
+    {
+      title: "Kanban Board",
+      description:
+        "A Trello-like task management board built with React. It features task creation, category-based organization, and intuitive navigation for moving tasks across stages (To Do, Dev in Progress, QA in Progress, Completed). Designed with a clean UI for better usability.",
+      techStack: ["React", "JavaScript", "CSS"],
+      demoLink: "https://ruturajk1604.github.io/kanban-board",
+      githubLink: "https://github.com/ruturajk1604/kanban-board",
+    },
   ];
 
   // Theme-based header and button text
@@ -122,80 +130,80 @@ export default function Projects() {
         >
           {" "}
           {projectsForTheme.map((project, idx) => (
-              <Card
-                sx={{
-                  border: "1px solid #ddd",
-                  borderRadius: 2,
-                  p: 2,
-                  my: 2,
-                  height: "250px",
-                  minWidth: "300px",
-                  display: "flex",
-                  flexDirection: "column", // stack content vertically
-                  "&:hover": {
-                    boxShadow: 3,
-                    transform: "scale(1.02)",
-                    transition: "0.3s",
-                  },
-                }}
+            <Card
+              sx={{
+                border: "1px solid #ddd",
+                borderRadius: 2,
+                p: 2,
+                my: 2,
+                height: "250px",
+                minWidth: "300px",
+                display: "flex",
+                flexDirection: "column", // stack content vertically
+                "&:hover": {
+                  boxShadow: 3,
+                  transform: "scale(1.02)",
+                  transition: "0.3s",
+                },
+              }}
+            >
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{ color: theme.palette.text.primary }}
               >
-                <Typography
-                  variant="h6"
-                  gutterBottom
-                  sx={{ color: theme.palette.text.primary }}
-                >
-                  {project.title}
-                </Typography>
+                {project.title}
+              </Typography>
 
-                <Typography
-                  variant="body2"
-                  color={theme.palette.text.secondary}
-                  paragraph
-                >
-                  {project.description}
-                </Typography>
+              <Typography
+                variant="body2"
+                color={theme.palette.text.secondary}
+                paragraph
+              >
+                {project.description}
+              </Typography>
 
-                <List dense sx={{ pl: 2 }}>
-                  {project.features.map((feat, i) => (
-                    <ListItem key={i} sx={{ py: 0 }}>
-                      <ListItemText primary={`• ${feat}`} />
-                    </ListItem>
-                  ))}
-                </List>
+              <List dense sx={{ pl: 2 }}>
+                {project.features.map((feat, i) => (
+                  <ListItem key={i} sx={{ py: 0 }}>
+                    <ListItemText primary={`• ${feat}`} />
+                  </ListItem>
+                ))}
+              </List>
 
-                {/* Push buttons to bottom */}
-                <Box sx={{ mt: "auto" }}>
-                  {project.github !== "#" && (
-                    <Button
-                      size="small"
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        mr: 1,
-                        background: btnBg,
-                        color: btnColor,
-                        "&:hover": { opacity: 0.9, background: btnBg },
-                      }}
-                    >
-                      GitHub
-                    </Button>
-                  )}
+              {/* Push buttons to bottom */}
+              <Box sx={{ mt: "auto" }}>
+                {project.github !== "#" && (
                   <Button
                     size="small"
-                    href={project.demo}
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
+                      mr: 1,
                       background: btnBg,
                       color: btnColor,
                       "&:hover": { opacity: 0.9, background: btnBg },
                     }}
                   >
-                    {buttonTextMap[themeName] || "Live Demo"}
+                    GitHub
                   </Button>
-                </Box>
-              </Card>
+                )}
+                <Button
+                  size="small"
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    background: btnBg,
+                    color: btnColor,
+                    "&:hover": { opacity: 0.9, background: btnBg },
+                  }}
+                >
+                  {buttonTextMap[themeName] || "Live Demo"}
+                </Button>
+              </Box>
+            </Card>
           ))}
         </Box>
       </CommonCard>
