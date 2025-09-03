@@ -65,10 +65,10 @@ export default function Projects() {
     {
       title: "Kanban Board",
       description:
-        "A Trello-like task management board built with React. It features task creation, category-based organization, and intuitive navigation for moving tasks across stages (To Do, Dev in Progress, QA in Progress, Completed). Designed with a clean UI for better usability.",
-      techStack: ["React", "JavaScript", "CSS"],
-      demoLink: "https://ruturajk1604.github.io/kanban-board",
-      githubLink: "https://github.com/ruturajk1604/kanban-board",
+        "A Trello-like task management board built with React.",
+      features: ["It features task creation", "category-based organization", "Intuitive navigation for moving tasks across stages"],
+      demo: "https://ruturajk1604.github.io/kanban-board",
+      github: "#",
     },
   ];
 
